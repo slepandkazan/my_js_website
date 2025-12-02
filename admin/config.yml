@@ -1,0 +1,18 @@
+backend:
+  name: github
+  repo: ваш-логин/ваш-репозиторий # Имя вашего репозитория на GitHub
+  branch: main # Ветка, где хранится сайт
+
+media_folder: "images/uploads" # Папка для загруженных изображений
+public_folder: "/images/uploads" # Путь от корня сайта до этой папки
+
+collections:
+  - name: "blog"
+    label: "Статьи блога"
+    folder: "_posts" # Папка, где будут храниться файлы статей
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Текст статьи", name: "body", widget: "markdown" }
