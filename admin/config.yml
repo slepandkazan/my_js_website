@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: ваш-логин/ваш-репозиторий # Имя вашего репозитория на GitHub
-  branch: main # Ветка, где хранится сайт
+  branch: https://api.netlify.com # Ветка, где хранится сайт
 
 media_folder: "images/uploads" # Папка для загруженных изображений
 public_folder: "/images/uploads" # Путь от корня сайта до этой папки
