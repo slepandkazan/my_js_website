@@ -18,6 +18,34 @@
     </nav>
 </header>
 <script src="script.js"></script>
+<div id="app">
+  <!-- Контент будет загружен здесь -->
+</div>
+
+<script>
+  // Загружаем контент из CMS (из файла content/home.md)
+  fetch('content/home.md')
+    .then(response => response.text())
+    .then(text => {
+      // Парсим Markdown и YAML фронт-матер
+      const parts = text.split('---');
+      const frontMatter = parts[1];
+      const content = parts.slice(2).join('---');
+      
+      // Простой парсинг YAML (можно использовать библиотеку js-yaml)
+      const title = frontMatter.match(/title: "(.*?)"/)[1];
+      const description = frontMatter.match(/description: "(.*?)"/)[1];
+      
+      // Отображаем на странице
+      document.getElementById('app').innerHTML = 
+        <h1>${title}</h1>
+        <p>${description}</p>
+        <div>${marked.parse(content)}</div>
+      ;
+    });
+</script>
+<!-- Подключаем библиотеку для Markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>    
 </body>
 <main>
     <section id="home">
@@ -63,4 +91,5 @@
 <footer>
     <p>© 2025 Моя первая веб-страница. Создано с ❤️</p>
 </footer>
+
 </html>
