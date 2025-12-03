@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: slepandkazan/my_js_website  
   branch: main
+  site_domain: slepandkazan.github.io  
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -11,9 +13,10 @@ collections:
     files:
       - label: "Главная страница"
         name: "home"
-        file: "content/home.md"
+        file: "data/content.json"
         fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "Описание", name: "description", widget: "text"}
-          - {label: "Изображение", name: "image", widget: "image"}
-          - {label: "Контент", name: "body", widget: "markdown"}
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Описание", name: "description", widget: "text" }
+          - { label: "Контент", name: "content", widget: "markdown" }
+          - { label: "Изображение", name: "imageUrl", widget: "string", required: false }
+          - { label: "Тема", name: "theme", widget: "select", options: ["default", "green", "red", "dark"], default: "default" }
