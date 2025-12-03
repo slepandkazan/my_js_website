@@ -1,18 +1,19 @@
 backend:
-  name: github
-  repo: ваш-логин/ваш-репозиторий # Имя вашего репозитория на GitHub
-  branch: https://api.netlify.com # Ветка, где хранится сайт
+  name: git-gateway
+  branch: main
 
-media_folder: "images/uploads" # Папка для загруженных изображений
-public_folder: "/images/uploads" # Путь от корня сайта до этой папки
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "blog"
-    label: "Статьи блога"
-    folder: "_posts" # Папка, где будут храниться файлы статей
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Заголовок", name: "title", widget: "string" }
-      - { label: "Дата публикации", name: "date", widget: "datetime" }
-      - { label: "Текст статьи", name: "body", widget: "markdown" }
+  - name: "pages"
+    label: "Страницы"
+    files:
+      - label: "Главная страница"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "Описание", name: "description", widget: "text"}
+          - {label: "Изображение", name: "image", widget: "image"}
+          - {label: "Контент", name: "body", widget: "markdown"}
